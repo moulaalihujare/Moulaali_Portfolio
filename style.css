@@ -166,17 +166,23 @@ section {
 #profile {
   display: flex;
   justify-content: center;
-  gap: 5rem;
-  height: 80vh;
+  gap: 0rem;
+  height: 120vh; 
+  /* original gap is 5rem & height value is 80vh  */
 }
 
 .section__pic-container {
   display: flex;
-  height: 400px;
-  width: 400px;
+  height: 800px;
+  width: 800px;
   margin: auto 0;
   filter: drop-shadow(10px 10px 10px rgb(194, 192, 192));
+  /* filter: grayscale(200%);
+  transition: filter 300ms; */
 }
+/* .section__pic-container:is(:hover,:focus){
+  filter: grayscale(0%);
+} */
 
 .section__text {
   align-self: center;
@@ -243,12 +249,13 @@ section {
 
 .btn-color-1,
 .btn-color-2:hover {
-  background: rgb(53, 53, 53);
-  color: white;
+  background: rgb(6, 193, 193); 
+  /* eidted */
+  color: rgb(255, 252, 252);
 }
 
 .btn-color-1:hover {
-  background: rgb(0, 0, 0);
+  background: rgb(3, 3, 3);
 }
 
 .btn-color-2 {
@@ -298,11 +305,13 @@ section {
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: white;
+  background: rgb(0, 224, 153);
   border-radius: 2rem;
-  border: rgb(53, 53, 53) 0.1rem solid;
-  border-color: rgb(163, 163, 163);
+  border: rgb(255, 255, 255) 0.1rem solid;
+  border-color: rgb(255, 255, 255);
   text-align: center;
+  /* color: rgb(255, 255, 255); */
+  /* edited */
 }
 
 .section-container {
@@ -310,11 +319,11 @@ section {
   height: 80%;
 }
 
-.section__pic-container {
-  height: 600px;
-  width: 600px;
+/* .section__pic-container {
+  height: 700px;
+  width: 700px;
   margin: auto 0;
-}
+} */
 
 /* EXPERIENCE SECTION */
 
@@ -323,7 +332,7 @@ section {
 }
 
 .experience-sub-title {
-  color: rgb(85, 85, 85);
+  color: rgb(7, 0, 2);
   font-weight: 600;
   font-size: 1.75rem;
   margin-bottom: 2rem;
