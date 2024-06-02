@@ -16,7 +16,7 @@
 body {
    font-family: "Poppins", sans-serif; 
    font-weight: 50;
-   word-spacing: 10px;
+   word-spacing: 8px;
 
    
   
@@ -64,7 +64,7 @@ nav {
 a {
   color: #F6DCAC;
   text-decoration: none;
-  text-decoration-color: white;
+  text-decoration-color: rgb(255, 255, 255);
 }
 
 a:hover {
@@ -457,7 +457,7 @@ article .icon {
 }
 
 .email-icon {
-  height: 2.5rem;
+  height: 1.5rem;
 }
 
 /* FOOTER SECTION */
