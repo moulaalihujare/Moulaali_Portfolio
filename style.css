@@ -1,5 +1,8 @@
 /* GENERAL */
 
+
+
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
 
 * {
@@ -7,8 +10,16 @@
   padding: 0;
 }
 
+
+
+
 body {
-  font-family: "Poppins", sans-serif;
+   font-family: "Poppins", sans-serif; 
+   font-weight: 50;
+   word-spacing: 10px;
+
+   
+  
 }
 
 html {
@@ -16,7 +27,9 @@ html {
 }
 
 p {
-  color: rgb(85, 85, 85);
+  color: rgb(4, 252, 227);
+  /* gap:1em; */
+
 }
 
 /* TRANSITION */
@@ -37,6 +50,7 @@ nav {
   justify-content: space-around;
   align-items: center;
   height: 17vh;
+  
 }
 
 .nav-links {
@@ -44,23 +58,25 @@ nav {
   list-style: none;
   font-size: 1.5rem;
   
+  
 }
 
 a {
-  color: black;
+  color: #F6DCAC;
   text-decoration: none;
   text-decoration-color: white;
 }
 
 a:hover {
-  color: grey;
+  /* color: rgb(255, 254, 254); */
+  color: rgb(4, 252, 227);
   text-decoration: underline;
   text-underline-offset: 1rem;
-  text-decoration-color: rgb(181, 181, 181);
+  text-decoration-color: rgb(255, 255, 255); 
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .logo:hover {
@@ -90,7 +106,7 @@ a:hover {
 .hamburger-icon span {
   width: 100%;
   height: 2px;
-  background-color: black;
+  background-color: rgb(253, 253, 253);
   transition: all 0.3 ease-in-out;
 }
 
@@ -110,7 +126,7 @@ a:hover {
   padding: 10px;
   text-align: center;
   font-size: 1.5rem;
-  color: black;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   transition: all 0.3 ease-in-out;
 }
@@ -166,17 +182,17 @@ section {
 #profile {
   display: flex;
   justify-content: center;
-  gap: 0rem;
-  height: 120vh; 
+  gap: 1rem;
+  height: 130vh; 
   /* original gap is 5rem & height value is 80vh  */
 }
 
 .section__pic-container {
   display: flex;
-  height: 800px;
-  width: 800px;
+  height: 656px;
+  width: 400px;
   margin: auto 0;
-  filter: drop-shadow(10px 10px 10px rgb(194, 192, 192));
+  filter: drop-shadow(10px 10px 10px rgb(70, 70, 70));
   /* filter: grayscale(200%);
   transition: filter 300ms; */
 }
@@ -211,7 +227,7 @@ section {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
-  gap: 1rem;
+  gap: 3rem;
 }
 
 /* ICONS */
@@ -219,6 +235,7 @@ section {
 .icon {
   cursor: pointer;
   height: 2rem;
+  
 }
 
 /* BUTTONS */
@@ -239,7 +256,7 @@ section {
 
 .btn-color-1,
 .btn-color-2 {
-  border: rgb(53, 53, 53) 0.1rem solid;
+  border: rgb(255, 255, 255) 0.1rem solid;
 }
 
 .btn-color-1:hover,
@@ -249,13 +266,13 @@ section {
 
 .btn-color-1,
 .btn-color-2:hover {
-  background: rgb(6, 193, 193); 
+  background: #f9f8f8; 
   /* eidted */
-  color: rgb(255, 252, 252);
+  color: #023539;
 }
 
 .btn-color-1:hover {
-  background: rgb(3, 3, 3);
+  background: rgb(161, 148, 148);
 }
 
 .btn-color-2 {
@@ -278,7 +295,7 @@ section {
 
 .about-containers {
   gap: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   margin-top: 2rem;
 }
 
@@ -292,9 +309,9 @@ section {
   display: flex;
 }
 
-.about-pic {
+/* .about-pic {
   border-radius: 2rem;
-}
+} */
 
 .arrow {
   position: absolute;
@@ -305,10 +322,9 @@ section {
 .details-container {
   padding: 1.5rem;
   flex: 1;
-  background: rgb(0, 224, 153);
+  background: #028391;
   border-radius: 2rem;
-  border: rgb(255, 255, 255) 0.1rem solid;
-  border-color: rgb(255, 255, 255);
+  border-color: none;
   text-align: center;
   /* color: rgb(255, 255, 255); */
   /* edited */
@@ -329,19 +345,24 @@ section {
 
 #experience {
   position: relative;
+  
 }
 
 .experience-sub-title {
   color: rgb(7, 0, 2);
-  font-weight: 600;
+  font-weight: 100;
   font-size: 1.75rem;
   margin-bottom: 2rem;
+  
 }
 
 .experience-details-container {
   display: flex;
   justify-content: center;
   flex-direction: column;
+  color: rgb(231, 223, 223);
+  
+
 }
 
 .article-container {
@@ -351,6 +372,7 @@ section {
   flex-direction: row;
   gap: 2.5rem;
   justify-content: space-around;
+  
 }
 
 article {
@@ -358,10 +380,12 @@ article {
   width: 10rem;
   justify-content: space-around;
   gap: 0.5rem;
+  
 }
 
 article .icon {
   cursor: default;
+  
 }
 
 /* PROJECTS SECTION */
@@ -371,8 +395,10 @@ article .icon {
 }
 
 .color-container {
-  border-color: rgb(163, 163, 163);
-  background: rgb(250, 250, 250);
+  border: none;
+  /* background: #028391; */
+  background:  #fae8c600
+
 }
 
 .project-img {
@@ -384,12 +410,14 @@ article .icon {
 
 .project-title {
   margin: 1rem;
-  color: black;
+  color:  #F6DCAC;
+  font-weight: 100;
 }
 
 .project-btn {
-  color: black;
+  color: rgb(4, 252, 227);
   border-color: rgb(163, 163, 163);
+  font-weight: 100;
 }
 
 /* CONTACT */
