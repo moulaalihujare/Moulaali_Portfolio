@@ -1,21 +1,29 @@
 <!DOCTYPE html>
-<body bgcolor="01204E"> 
+<body class="" >
 </body>
 <html lang="en">
-  <head>
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+    <head>
+     <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Titillium+Web:wght@300&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Titillium+Web:wght@300&display=swap" rel="stylesheet">  -->
+    
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>My Portfolio</title>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="mediaqueries.css" />
+    
+
   </head>
   <body>
-    <nav id="desktop-nav">
-      <div class="logo" style="color: rgb(4, 252, 227);" >  <span style="color: rgb(255, 255, 255);">  M</span>oulaali<span style="color: rgb(255, 255, 255);"> H</span>ujare</div>
+    <nav id="desktop-nav" >
+      <div>
+        <img src="assets/s.png"  style= "width: 110px; height: 110px; position: absolute; top: 1rem; left: 1; ">
+      </div>
+      <div class="logo" style="color: #06ffee;"  >
+         <span style="color: rgb(255, 255, 255);">  M</span>oulaali<span style="color: rgb(255, 255, 255);"> H</span>ujare</div>
       <div>
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
@@ -78,11 +86,23 @@
             onclick="location.href='https://github.com/moulaalihujare'"
           />
         </div>
-      </div>
+      </div> 
+      <img
+        src="./assets/darow.png"
+        alt="Arrow icon"
+        class="icon arrow"
+        onclick="location.href='./#about'"
+        style="position: absolute; right: 5rem; "
+      />
     </section>
+
+
     <section id="about">
       <p class="section__text__p1">Get To Know More</p>
-      <h1 class="title"  style="color: #F6DCAC; font-weight: 150; " >About Me</h1>
+      <h1 class="title">About Me</h1>
+        <div  > <p>
+          ㅤㅤㅤㅤㅤ
+        </p> </div>
         <div class="about-details-container">
           <div class="about-containers">
             <div class="details-container">
@@ -91,8 +111,8 @@
                 alt="Experience icon"
                 class="icon"
               />
-              <h3>Experience</h3>
-              <p style="color: rgb(255, 255, 255);" >1+ year's <br />Java Full-Stack Development</p>
+              <h3 style="font-weight: 500;" >Experience</h3>
+              <p style="color: rgb(16, 0, 0);" >1+ year's <br />Java Full-Stack Development</p>
             </div>
             <div class="details-container">
               <img
@@ -100,14 +120,16 @@
                 alt="Education icon"
                 class="icon"
               />
-              <h3>Education</h3>
-              <p style="color: rgb(255, 255, 255);" > B.Tech - Computer Science & Engineering</p>
-              <p style="color: rgb(255, 255, 255);"> Diploma - Computer Engineering</p>
+              <h3  style="font-weight: 500;" >Education</h3>
+              <p style="color: rgb(0, 0, 0);" > B.Tech-Computer Science & Engineering</p>
+              <p style="color: rgb(0, 0, 0);">  Diploma-Computer Engineering</p>
             </div>
           </div>
-          <div class="text-container">
-            <p style= color:antiquewhite>
+
+          <div class="text-container" style="font-size: 1.06rem; font-weight: 350; "    >
+            <p style= color:black >
               
+
               As a Java full-Stack developer with 1.6 year's of experience, I have a strong foundation in key technologies such as Java, Spring MVC, Spring Boot, Hibernate, JDBC, Maven, Tomcat, Servlet, JSP, JavaScript, HTML, CSS, Angular, Jenkins, Docker, and Kubernetes.
 
               I possess excellent problem-solving skills and am adept at working in a collaborative environment to develop and implement complex web applications.<br/> 
@@ -132,7 +154,7 @@
     </section>
     <section id="experience">
       <p class="section__text__p1">Explore My</p>
-      <h1 class="title"  style="color: #F6DCAC; font-weight: 150; " >Experience</h1>
+      <h1 class="title">Experience</h1>
       <div class="experience-details-container">
         <div class="about-containers">
           <div class="details-container">
@@ -145,7 +167,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;">HTML</h3>
+                  <h3 style="font-weight: 400;">HTML</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -156,7 +178,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;" >CSS</h3>
+                  <h3 style="font-weight: 400;" >CSS</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -167,7 +189,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;" >Angular</h3>
+                  <h3 style="font-weight: 400;" >Angular</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -178,7 +200,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;" >JavaScript</h3>
+                  <h3 style="font-weight: 400;" >JavaScript</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -189,7 +211,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;" >TypeScript</h3>
+                  <h3 style="font-weight: 400;" >TypeScript</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -200,7 +222,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;" >Bootstrap</h3>
+                  <h3 style="font-weight: 400;" >Bootstrap</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -216,7 +238,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;" >Java</h3>
+                  <h3 style="font-weight: 400;" >Java</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -227,7 +249,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;" >Springboot</h3>
+                  <h3 style="font-weight: 400;" >Springboot</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -238,7 +260,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;" >MySQL</h3>
+                  <h3 style="font-weight: 400;" >MySQL</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -249,20 +271,7 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;" >Jenkins</h3>
-                  <p>Experienced</p>
-                </div>
-              </article>
-
-
-              <article>
-                <img
-                  src="./assets/checkmark.png"
-                  alt="Experience icon"
-                  class="icon"
-                />
-                <div>
-                  <h3 style="font-weight: 500;" >Postman</h3>
+                  <h3 style="font-weight: 400;" >Jenkins</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -275,7 +284,20 @@
                   class="icon"
                 />
                 <div>
-                  <h3 style="font-weight: 500;" >Hibernate</h3>
+                  <h3 style="font-weight: 400;" >Postman</h3>
+                  <p>Experienced</p>
+                </div>
+              </article>
+
+
+              <article>
+                <img
+                  src="./assets/checkmark.png"
+                  alt="Experience icon"
+                  class="icon"
+                />
+                <div>
+                  <h3 style="font-weight: 400;" >Hibernate</h3>
                   <p>Experienced</p>
                 </div>
               </article>
@@ -298,7 +320,7 @@
     </section>
     <section id="projects">
       <p class="section__text__p1">Browse My Recent</p>
-      <h1 class="title"   style="color: #F6DCAC; font-weight: 150;" >Projects</h1>
+      <h1 class="title">Projects</h1>
       <div class="experience-details-container">
         <div class="about-containers">
           <div class="details-container color-container">
@@ -384,49 +406,47 @@
           </div>
         </div>
       </div>
-      
-      
       <img
         src="./assets/darow.png"
         alt="Arrow icon"
         class="icon arrow"
         onclick="location.href='./#contact'"
       />
-
-
     </section>
     <section id="contact">
       <p class="section__text__p1">Get in Touch</p>
-      <h1 class="title"  style="color: #F6DCAC; font-weight: 150;" >Contact Me</h1>
+      <h1 class="title" >Contact Me</h1>
 
-      <div class="contact-info-upper-container">
+      <div class="contact-info-upper-container" >
        
         <div class="contact-info-container">
           <img
-            src="./assets/emil.png"
+            src="./assets/gmail.png"
             alt="Email icon"
             class="icon contact-icon email-icon"
             style="height: 2rem;"
+            
           />
-          <p><a href="mailto:moulaalihujare@gmail.com">moulaalihujare@gmail.com</a></p>
+          <p><a href="mailto:moulaalihujare@gmail.com"> moulaalihujare@gmail.com</a></p>
         </div>
 
         <div class="contact-info-container">
           <img
-            src="./assets/link.png"
+            src="./assets/linkedin.png"
             alt="LinkedIn icon"
             class="icon contact-icon"
             style="height: 2rem;"
           />
+
           <p><a href="https://www.linkedin.com/in/moulaalihujare/">LinkedIn</a></p>
         </div>
 
         <div class="contact-info-container">
           <img
-            src="./assets/cell.png"
+            src="./assets/smartphone-call.png"
             alt="phone call icon"
             class="icon contact-icon email-icon"
-            style="height: 1.7rem;"
+            style="height: 2rem;"
           />
           <p><a href="tel:+919503477525">9503477525</a></p>
         </div>
@@ -444,7 +464,7 @@
           </ul>
         </div>
       </nav>
-      <p>Copyright &#169; 2023 Moulaali Hujare. All Rights Reserved.</p>
+      <p>Copyright &#169; 2024 Moulaali Hujare. All Rights Reserved.</p>
     </footer>
     <script src="script.js"></script>
   </body>
