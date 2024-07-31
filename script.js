@@ -21,3 +21,8 @@ window.onscroll= function() {
     navbar.classList.remove(sticky);
   }
 }
+
+if (thereIsEnoughRoom(window.innerWidth, window.innerHeight);
+   showItAll();
+else
+   showSorryComingSoon();
