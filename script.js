@@ -22,7 +22,3 @@ window.onscroll= function() {
   }
 }
 
-if (thereIsEnoughRoom(window.innerWidth, window.innerHeight);
-   showItAll();
-else
-   showSorryComingSoon();
