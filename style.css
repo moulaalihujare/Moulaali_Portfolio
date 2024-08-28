@@ -689,3 +689,16 @@ footer p {
       display: none;
   }
 }
+
+
+.verticalLine,.scroll,.sticky-icon {
+    opacity: 0; /* Initially invisible */
+    animation: showElement 2s forwards; /* Animation duration of 2 seconds */
+    animation-delay: 2s; /* Delay of 3 seconds */
+}
+
+@keyframes showElement {
+    to {
+        opacity: 1; /* Element becomes visible */
+    }
+}
