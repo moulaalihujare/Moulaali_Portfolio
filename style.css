@@ -45,6 +45,10 @@ nav,
 .nav-links {
   display: flex;
   
+  border-color: #fff; /* Visible border on hover */
+
+  
+  
 }
 
 nav {
@@ -52,6 +56,16 @@ nav {
   justify-content: space-around;
   align-items: center;
   height: 20vh;
+
+  /* border: 2px solid black; */
+  background-color: #4B70F5;
+  position: sticky; top: 0;
+  z-index: 1000;
+  border-radius: 500px;
+  border: 2px solid #000000;
+  box-shadow: 0 12px 10px rgba(0, 0, 0, 0.1);
+
+  
 }
 
 
@@ -60,6 +74,7 @@ nav {
   gap: 5rem;
   list-style: none;
   font-size: 1.5rem;
+ 
   
 }
 
