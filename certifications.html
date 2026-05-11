@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Certifications — Moulaali Hujare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Gloock:ital@0;1&family=Instrument+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+:root{
+  --bg:#F5F1EB; --bg-2:#EDE8DF;
+  --bg-dark:#1C2B1E; --bg-dark2:#243127;
+  --ink:#1A1A18; --ink-60:#6B6B62; --ink-30:#AEADA6;
+  --sand:#C8B89A; --moss:#3D5C3A; --moss-lt:#5A7D56;
+  --sage:#8FAF8C; --terracotta:#C17F5E;
+  --serif:'Gloock',Georgia,serif;
+  --sans:'Instrument Sans',sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --nav-h:70px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;overflow-x:hidden;cursor:none;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+
+/* Paper texture */
+body::after{content:'';position:fixed;inset:0;z-index:9000;pointer-events:none;opacity:.022;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;}
+
+/* CURSOR */
+#cur-dot{position:fixed;z-index:9500;pointer-events:none;width:6px;height:6px;border-radius:50%;background:var(--moss);transform:translate(-50%,-50%);transition:width .4s var(--ease),height .4s var(--ease),background .3s;}
+#cur-ring{position:fixed;z-index:9499;pointer-events:none;width:28px;height:28px;border:1px solid rgba(61,92,58,.35);border-radius:50%;transform:translate(-50%,-50%);}
+body.on-link #cur-dot{width:48px;height:48px;background:rgba(61,92,58,.1);}
+body.on-link #cur-ring{opacity:0;}
+
+/* PROGRESS */
+#bar{position:fixed;top:0;left:0;z-index:8000;height:2px;width:0%;background:var(--moss);transition:width .1s linear;}
+
+/* NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;align-items:center;justify-content:space-between;padding:0 72px;height:var(--nav-h);transition:background .7s var(--ease),border-color .7s,height .4s var(--ease);border-bottom:1px solid transparent;}
+#nav.solid{background:rgba(245,241,235,.93);backdrop-filter:blur(16px);border-color:rgba(26,26,24,.08);height:60px;}
+.nav-logo{font-family:var(--serif);font-size:.9rem;font-weight:400;letter-spacing:1.5px;color:var(--ink);cursor:none;}
+nav ul{display:flex;gap:36px;list-style:none;}
+nav ul a{font-size:.62rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:400;color:var(--ink-60);cursor:none;transition:color .3s;position:relative;}
+nav ul a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1px;background:var(--moss);transition:width .4s var(--ease);}
+nav ul a:hover,nav ul a.on{color:var(--ink);}
+nav ul a:hover::after,nav ul a.on::after{width:100%;}
+
+/* PAGE HERO */
+#page-hero{padding-top:calc(var(--nav-h) + 100px);padding-bottom:0;padding-left:72px;padding-right:72px;max-width:1280px;margin:0 auto;}
+.hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:44px;opacity:0;animation:rise 1.1s .15s var(--ease) forwards;}
+.eyebrow-dash{width:22px;height:1px;background:var(--moss);}
+.eyebrow-text{font-size:.58rem;letter-spacing:4px;text-transform:uppercase;color:var(--moss);}
+.page-title{font-family:var(--serif);font-size:clamp(3.2rem,7vw,7.5rem);font-weight:400;line-height:1.0;letter-spacing:-2px;color:var(--ink);}
+.page-title .ln{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em;}
+.page-title .wd{display:block;opacity:0;transform:translateY(108%);animation:slide-up 1.1s var(--ease) forwards;}
+.page-title .wd.a{animation-delay:.3s;}
+.page-title .wd.b{animation-delay:.52s;font-style:italic;color:var(--ink-60);}
+.page-sub{font-size:.9rem;line-height:1.9;font-weight:300;color:var(--ink-60);max-width:480px;margin-top:28px;margin-bottom:64px;opacity:0;animation:rise 1s .75s var(--ease) forwards;}
+.hero-rule{border:none;border-top:1px solid rgba(26,26,24,.1);opacity:0;animation:rise .8s .9s var(--ease) forwards;}
+
+/* FILTER BAR */
+.filter-bar{max-width:1280px;margin:0 auto;padding:32px 72px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;border-bottom:1px solid rgba(26,26,24,.08);opacity:0;animation:rise .9s 1s var(--ease) forwards;}
+.filter-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.fpill{display:inline-flex;align-items:center;padding:6px 20px;border:1px solid rgba(26,26,24,.12);background:transparent;color:var(--ink-60);font-family:var(--sans);font-size:.6rem;letter-spacing:2.5px;text-transform:uppercase;font-weight:400;cursor:none;transition:border-color .3s,color .3s,background .3s;position:relative;overflow:hidden;}
+.fpill::before{content:'';position:absolute;inset:0;background:var(--moss);transform:translateX(-101%);transition:transform .4s var(--ease);}
+.fpill span{position:relative;z-index:1;}
+.fpill:hover{border-color:var(--moss);color:var(--ink);}
+.fpill.active{border-color:var(--moss);color:var(--bg);background:var(--moss);}
+.fpill.active::before{transform:translateX(0);}
+.cert-count{font-size:.58rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--ink-30);white-space:nowrap;}
+.cert-count strong{color:var(--moss);font-weight:400;}
+
+/* GRID */
+#certs-main{max-width:1280px;margin:0 auto;padding:64px 72px 130px;}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;background:rgba(26,26,24,.1);border:1px solid rgba(26,26,24,.1);}
+
+/* CARD */
+.cert-card{background:var(--bg);cursor:none;position:relative;overflow:hidden;transition:background .35s var(--ease);opacity:0;transform:translateY(26px);animation:rise .9s var(--ease) forwards;}
+.cert-card:hover{background:var(--bg-2);}
+.cert-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--moss),var(--moss-lt));transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease);z-index:2;}
+.cert-card:hover::before{transform:scaleX(1);}
+
+/* Thumbnail */
+.cert-thumb{width:100%;aspect-ratio:16/11;background:var(--bg-dark);position:relative;overflow:hidden;}
+.cert-thumb canvas{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s var(--ease),opacity .4s;transform:scale(1.04);opacity:0;}
+.cert-thumb canvas.loaded{opacity:1;}
+.cert-card:hover .cert-thumb canvas{transform:scale(1.0);}
+.cert-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,rgba(28,43,30,.5) 100%);pointer-events:none;z-index:1;}
+
+/* Thumb states */
+.thumb-loader{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+.thumb-loader-ring{width:22px;height:22px;border:1px solid rgba(61,92,58,.2);border-top-color:var(--moss);border-radius:50%;animation:spin 1.2s linear infinite;}
+.thumb-loader-lbl{font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:var(--ink-30);}
+.thumb-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:var(--bg-dark);}
+.thumb-fallback svg{width:32px;height:32px;opacity:.25;color:var(--sand);}
+.thumb-fallback span{font-size:.52rem;letter-spacing:3px;text-transform:uppercase;color:var(--ink-30);}
+
+/* Hover overlay */
+.cert-view{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .35s var(--ease);}
+.cert-card:hover .cert-view{opacity:1;}
+.cert-view-inner{background:rgba(245,241,235,.92);backdrop-filter:blur(8px);padding:10px 28px;font-size:.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--moss);border:1px solid rgba(61,92,58,.2);transform:translateY(4px);transition:transform .4s var(--ease);}
+.cert-card:hover .cert-view-inner{transform:translateY(0);}
+
+/* Card body */
+.cert-body{padding:26px 26px 30px;}
+.cert-cat{font-size:.54rem;letter-spacing:3px;text-transform:uppercase;color:var(--moss);margin-bottom:10px;display:flex;align-items:center;gap:10px;}
+.cert-cat::before{content:'';display:inline-block;width:12px;height:1px;background:var(--moss);}
+.cert-title{font-family:var(--serif);font-size:1.12rem;font-weight:400;line-height:1.25;letter-spacing:-.3px;color:var(--ink);margin-bottom:6px;transition:color .3s;}
+.cert-card:hover .cert-title{color:var(--moss);}
+.cert-issuer{font-size:.72rem;font-weight:300;color:var(--ink-60);margin-bottom:18px;letter-spacing:.2px;}
+.cert-footer{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid rgba(26,26,24,.08);}
+.cert-date{font-size:.56rem;letter-spacing:2px;text-transform:uppercase;color:var(--ink-30);}
+.cert-score{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--sand);}
+.cert-score.endorsement{font-size:.62rem;letter-spacing:1.5px;color:var(--sage);font-style:normal;font-family:var(--sans);}
+
+/* Stagger */
+.cert-card:nth-child(1){animation-delay:.04s}.cert-card:nth-child(2){animation-delay:.08s}
+.cert-card:nth-child(3){animation-delay:.12s}.cert-card:nth-child(4){animation-delay:.16s}
+.cert-card:nth-child(5){animation-delay:.20s}.cert-card:nth-child(6){animation-delay:.24s}
+.cert-card:nth-child(7){animation-delay:.28s}.cert-card:nth-child(8){animation-delay:.32s}
+.cert-card:nth-child(9){animation-delay:.36s}.cert-card:nth-child(10){animation-delay:.40s}
+.cert-card:nth-child(11){animation-delay:.44s}.cert-card:nth-child(12){animation-delay:.48s}
+.cert-card:nth-child(13){animation-delay:.52s}.cert-card:nth-child(14){animation-delay:.56s}
+.cert-card:nth-child(15){animation-delay:.60s}.cert-card:nth-child(16){animation-delay:.64s}
+.cert-card:nth-child(17){animation-delay:.68s}.cert-card:nth-child(18){animation-delay:.72s}
+.cert-card.hidden{display:none;}
+
+/* MODAL */
+.modal-backdrop{position:fixed;inset:0;z-index:2000;background:rgba(28,43,30,0);backdrop-filter:blur(0px);display:flex;align-items:center;justify-content:center;pointer-events:none;transition:background .55s var(--ease),backdrop-filter .55s var(--ease);}
+.modal-backdrop.open{background:rgba(18,28,19,.92);backdrop-filter:blur(20px) saturate(1.3);pointer-events:all;}
+.modal-shell{position:relative;width:min(860px,95vw);max-height:90vh;background:var(--bg-dark2);border:1px solid rgba(245,241,235,.07);border-left:2px solid var(--moss-lt);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(18px) scale(.97);transition:opacity .5s var(--ease) .1s,transform .55s var(--ease) .1s;box-shadow:0 40px 120px rgba(0,0,0,.7),0 0 50px rgba(61,92,58,.06);}
+.modal-backdrop.open .modal-shell{opacity:1;transform:translateY(0) scale(1);}
+
+.modal-header{padding:30px 40px 24px;border-bottom:1px solid rgba(245,241,235,.06);display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-shrink:0;background:rgba(255,255,255,.015);}
+.modal-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.modal-dash{width:18px;height:1px;background:var(--moss-lt);}
+.modal-issuer-lbl{font-size:.56rem;letter-spacing:3.5px;text-transform:uppercase;color:var(--sage);}
+.modal-title{font-family:var(--serif);font-size:clamp(1.1rem,2.5vw,1.7rem);font-weight:400;letter-spacing:-.4px;color:rgba(245,241,235,.85);line-height:1.2;}
+.modal-close{flex-shrink:0;width:36px;height:36px;border:1px solid rgba(245,241,235,.1);background:transparent;color:rgba(245,241,235,.28);cursor:none;display:flex;align-items:center;justify-content:center;transition:border-color .3s,color .3s,background .3s;}
+.modal-close:hover{border-color:rgba(245,241,235,.28);color:rgba(245,241,235,.8);background:rgba(255,255,255,.04);}
+.modal-close svg{width:14px;height:14px;}
+
+.modal-body{flex:1;overflow-y:auto;overflow-x:hidden;padding:30px 40px;scrollbar-width:thin;scrollbar-color:rgba(61,92,58,.4) transparent;}
+.modal-body::-webkit-scrollbar{width:3px;}
+.modal-body::-webkit-scrollbar-thumb{background:rgba(61,92,58,.4);}
+
+/* Loading state */
+.modal-loading{padding:56px 0;text-align:center;}
+.modal-loading-ring{width:34px;height:34px;border:1px solid rgba(143,175,140,.2);border-top-color:var(--moss-lt);border-radius:50%;animation:spin 1.3s linear infinite;margin:0 auto 16px;}
+.modal-loading p{font-size:.6rem;letter-spacing:3px;text-transform:uppercase;color:rgba(245,241,235,.2);}
+
+/* PDF pages */
+.pdf-pages{display:flex;flex-direction:column;gap:12px;}
+.pdf-page-wrap{position:relative;background:#fff;box-shadow:0 8px 40px rgba(0,0,0,.5);opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease),transform .5s var(--ease);}
+.pdf-page-wrap.vis{opacity:1;transform:translateY(0);}
+.pdf-page-wrap canvas{display:block;width:100%;height:auto;}
+.pdf-pg-badge{position:absolute;bottom:10px;right:12px;font-size:.52rem;letter-spacing:2px;text-transform:uppercase;color:rgba(245,241,235,.45);background:rgba(28,43,30,.82);padding:3px 10px;}
+
+/* Error state — fixed: shows path + helpful message */
+.modal-error{padding:48px 0;text-align:center;}
+.modal-error-icon{font-size:2rem;margin-bottom:16px;opacity:.3;}
+.modal-error h4{font-family:var(--serif);font-size:1rem;color:rgba(245,241,235,.5);font-weight:400;margin-bottom:8px;}
+.modal-error p{font-size:.65rem;letter-spacing:1.5px;color:rgba(245,241,235,.22);line-height:1.8;max-width:420px;margin:0 auto 20px;}
+.modal-error small{display:block;font-family:monospace;font-size:.6rem;color:rgba(245,241,235,.15);word-break:break-all;padding:8px 16px;border:1px solid rgba(245,241,235,.06);background:rgba(0,0,0,.2);}
+
+.modal-footer{padding:16px 40px;border-top:1px solid rgba(245,241,235,.06);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-shrink:0;background:rgba(0,0,0,.12);flex-wrap:wrap;}
+.modal-meta{font-size:.56rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,241,235,.2);}
+.modal-meta strong{color:var(--sage);font-weight:400;}
+.btn-ghost-lt{display:inline-flex;align-items:center;gap:8px;padding:10px 22px;border:1px solid rgba(245,241,235,.1);color:rgba(245,241,235,.38);font-family:var(--sans);font-size:.58rem;font-weight:400;letter-spacing:2px;text-transform:uppercase;cursor:none;transition:border-color .3s,color .3s,transform .4s var(--ease);}
+.btn-ghost-lt:hover{border-color:rgba(245,241,235,.32);color:rgba(245,241,235,.78);transform:translateY(-1px);}
+.btn-ghost-lt svg{width:11px;height:11px;}
+
+/* DARK BAND */
+.dark-band{background:var(--bg-dark);padding:100px 72px;display:flex;align-items:flex-end;justify-content:space-between;gap:60px;flex-wrap:wrap;}
+.db-quote{font-family:var(--serif);font-size:clamp(1.3rem,2.5vw,2.2rem);font-weight:400;font-style:italic;line-height:1.5;color:rgba(245,241,235,.62);max-width:620px;}
+.db-quote em{color:rgba(245,241,235,.32);font-style:normal;font-size:.56rem;letter-spacing:3.5px;text-transform:uppercase;display:block;margin-top:24px;}
+.db-stats{display:flex;flex-direction:column;gap:8px;flex-shrink:0;}
+.db-stat{display:flex;align-items:baseline;gap:14px;}
+.db-n{font-family:var(--serif);font-size:2.6rem;font-weight:400;color:var(--sage);line-height:1;}
+.db-l{font-size:.56rem;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,241,235,.26);}
+
+/* FOOTER */
+footer{background:var(--bg-dark);padding:36px 72px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;border-top:1px solid rgba(245,241,235,.05);}
+.ft-l{font-family:var(--serif);font-size:.82rem;font-weight:400;color:rgba(245,241,235,.3);letter-spacing:1.5px;}
+.ft-r{font-size:.56rem;letter-spacing:2px;text-transform:uppercase;color:rgba(245,241,235,.2);}
+
+/* SCROLL REVEAL */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease);}
+.rv.in{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+/* KEYFRAMES */
+@keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slide-up{from{opacity:0;transform:translateY(108%)}to{opacity:1;transform:translateY(0)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  #nav{padding:0 36px;}
+  #page-hero{padding-left:36px;padding-right:36px;}
+  .filter-bar{padding:24px 36px;}
+  #certs-main{padding:48px 36px 100px;}
+  .dark-band{padding:72px 36px;}
+  footer{padding:28px 36px;}
+  .modal-header,.modal-body,.modal-footer{padding-left:28px;padding-right:28px;}
+}
+@media(max-width:768px){
+  nav ul{display:none;}
+  .certs-grid{grid-template-columns:1fr;}
+  .dark-band{flex-direction:column;align-items:flex-start;}
+  .modal-footer{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:520px){
+  #page-hero,#certs-main,.filter-bar{padding-left:24px;padding-right:24px;}
+  #certs-main{padding-bottom:80px;}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+</style>
+</head>
+<body>
+
+<div id="bar"></div>
+<div id="cur-dot"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">Moulaali Hujare</a>
+  <ul>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#skills">Skills</a></li>
+    <li><a href="index.html#work">Work</a></li>
+    <li><a href="index.html#resume">Résumé</a></li>
+    <li><a href="certifications.html" class="on">Certifications</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<header>
+  <div id="page-hero">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-dash"></div>
+      <span class="eyebrow-text">Verified Credentials · Mphasis TalentNext</span>
+    </div>
+    <h1 class="page-title">
+      <span class="ln"><span class="wd a">Certifications</span></span>
+      <span class="ln"><span class="wd b">&amp; Achievements</span></span>
+    </h1>
+    <p class="page-sub">Eighteen assessments across databases, cloud, DevOps, back-end, front-end, and data engineering — each one earned, each one on record.</p>
+    <hr class="hero-rule"/>
+  </div>
+</header>
+
+<!-- FILTER BAR -->
+<div class="filter-bar">
+  <div class="filter-pills" id="filterPills"></div>
+  <span class="cert-count" id="certCount"></span>
+</div>
+
+<!-- GRID -->
+<main id="certs-main">
+  <div class="certs-grid" id="certsGrid"></div>
+</main>
+
+<!-- DARK BAND -->
+<section class="dark-band">
+  <p class="db-quote rv">
+    "Every certificate a deliberate chapter — knowledge tested, validated, and permanently inscribed."
+    <em>Moulaali Hujare · Mphasis TalentNext · 2022</em>
+  </p>
+  <div class="db-stats rv d2">
+    <div class="db-stat"><span class="db-n">18</span><span class="db-l">Certificates</span></div>
+    <div class="db-stat"><span class="db-n">78<span style="font-size:1.3rem">%</span></span><span class="db-l">Avg Score</span></div>
+    <div class="db-stat"><span class="db-n">6</span><span class="db-l">Domains</span></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="ft-l">Moulaali Hujare</span>
+  <span class="ft-r">© 2024 · All rights reserved</span>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitleEl" aria-hidden="true">
+  <div class="modal-shell">
+    <div class="modal-header">
+      <div>
+        <div class="modal-eyebrow">
+          <div class="modal-dash"></div>
+          <span class="modal-issuer-lbl" id="modalIssuerEl"></span>
+        </div>
+        <h2 class="modal-title" id="modalTitleEl"></h2>
+      </div>
+      <button class="modal-close" id="modalClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="modal-body" id="modalBody">
+      <div class="modal-loading" id="modalLoading">
+        <div class="modal-loading-ring"></div>
+        <p>Opening certificate…</p>
+      </div>
+      <div class="pdf-pages" id="pdfPages" hidden></div>
+      <div class="modal-error" id="modalError" hidden>
+        <div class="modal-error-icon">◈</div>
+        <h4>Certificate Pending Setup</h4>
+        <p>This certificate PDF hasn't been placed in the assets folder yet. Copy the file to the path shown below to enable rendering.</p>
+        <small id="modalErrorPath"></small>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <span class="modal-meta" id="modalMeta"></span>
+      <a href="#" id="modalDl" download target="_blank" rel="noopener" class="btn-ghost-lt">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Download PDF
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+'use strict';
+
+/* PDF.js worker */
+const pdfjsLib = window['pdfjs-dist/build/pdf'];
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+  'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+/* ── MASTER CERTIFICATE LIST ─────────────────────────────
+   Deduplicated: unique IDs, one entry per distinct certificate.
+   "score: null" = Training Endorsement (no assessment score).
+──────────────────────────────────────────────────────── */
+const CERTS = [
+  {
+    id:'rdb',
+    title:'Relational Databases — S1',
+    issuer:'Mphasis TalentNext',
+    date:'29 Jan 2022', score:84,
+    category:'Database',
+    file:'assets/certificates/Relational Database-S1 Certificate.pdf'
+  },
+  {
+    id:'sql',
+    title:'SQL — S1',
+    issuer:'Mphasis TalentNext',
+    date:'04 Feb 2022', score:72,
+    category:'Database',
+    file:'assets/certificates/SQL-Certificate-S1.pdf'
+  },
+  {
+    id:'ph1',
+    title:'Simplilearn Phase 1',
+    issuer:'Mphasis TalentNext',
+    date:'09 Mar 2022', score:84,
+    category:'Assessment',
+    file:'assets/certificates/Simplilearn Phase -1 Certificate.pdf'
+  },
+  {
+    id:'cloud',
+    title:'Cloud Fundamentals — S1',
+    issuer:'Mphasis TalentNext',
+    date:'14 Mar 2022', score:68,
+    category:'Cloud',
+    file:'assets/certificates/Cloud Fundamentals -S1.pdf'
+  },
+  {
+    id:'stf',
+    title:'Software Testing Foundations — S1',
+    issuer:'Mphasis TalentNext',
+    date:'14 Mar 2022', score:72,
+    category:'Testing',
+    file:'assets/certificates/Software Testing And Foundation Certificate -S1.pdf'
+  },
+  {
+    id:'ph2',
+    title:'Simplilearn Phase 2',
+    issuer:'Mphasis TalentNext',
+    date:'23 Mar 2022', score:76,
+    category:'Assessment',
+    file:'assets/certificates/Simplilearn Phase -2 Certificate.pdf'
+  },
+  {
+    id:'ph3',
+    title:'Simplilearn Phase 3',
+    issuer:'Mphasis TalentNext',
+    date:'02 Apr 2022', score:92,
+    category:'Assessment',
+    file:'assets/certificates/Simplilearn Phase -3 Certificate.pdf'
+  },
+  {
+    id:'ph4',
+    title:'Simplilearn Phase 4',
+    issuer:'Mphasis TalentNext',
+    date:'13 Apr 2022', score:80,
+    category:'Assessment',
+    file:'assets/certificates/Simplilearn Phase -4 Certificate.pdf'
+  },
+  {
+    id:'ph5',
+    title:'Simplilearn Phase 5',
+    issuer:'Mphasis TalentNext',
+    date:'26 Apr 2022', score:84,
+    category:'Assessment',
+    file:'assets/certificates/Simplilearn Phase -5 Certificate.pdf'
+  },
+  {
+    id:'swagger',
+    title:'Swagger / OpenAPI — S1',
+    issuer:'Mphasis TalentNext',
+    date:'25 May 2022', score:80,
+    category:'Back-end',
+    file:'assets/certificates/Moulaali- Swagger- Certificate.pdf'
+  },
+  {
+    id:'tdd',
+    title:'TDD for Angular — S1',
+    issuer:'Mphasis TalentNext',
+    date:'25 May 2022', score:72,
+    category:'Front-end',
+    file:'assets/certificates/Angular Certificate.pdf'
+  },
+  {
+    id:'jms',
+    title:'Java Microservices — S1',
+    issuer:'Mphasis TalentNext',
+    date:'26 May 2022', score:72,
+    category:'Back-end',
+    file:'assets/certificates/Moulaali - Java Microservice.pdf'
+  },
+  {
+    id:'spark',
+    title:'Apache Spark — S1',
+    issuer:'Mphasis Learning & Development',
+    date:'28 Aug 2022', score:null,   /* Endorsement — no score */
+    duration:'16 hrs',
+    category:'Data',
+    file:'assets/certificates/Apache.pdf'
+  },
+  {
+    id:'jenkins',
+    title:'Jenkins CI/CD — S1',
+    issuer:'Mphasis TalentNext',
+    date:'31 Aug 2022', score:84,
+    category:'DevOps',
+    file:'assets/certificates/Jenkins S1 Certificate.pdf'
+  },
+  {
+    id:'junit',
+    title:'JUnit — S1',
+    issuer:'Mphasis TalentNext',
+    date:'31 Aug 2022', score:68,
+    category:'Testing',
+    file:'assets/certificates/JUnit S1 Certificate.pdf'
+  },
+  {
+    id:'react',
+    title:'React.js — S1',
+    issuer:'Mphasis TalentNext',
+    date:'05 Sep 2022', score:68,
+    category:'Front-end',
+    file:'assets/certificates/React.Js S1 Certificate.pdf'
+  }
+];
+
+/* ── State ── */
+const CATEGORIES = ['All', ...new Set(CERTS.map(c => c.category))];
+let activeFilter = 'All';
+let thumbQueue   = [...CERTS];
+let qBusy        = false;
+let activeCert   = null;
+
+/* ── Cursor (identical to index.html) ── */
+const dot  = document.getElementById('cur-dot');
+const ring = document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+(function tick(){
+  dot.style.left=mx+'px'; dot.style.top=my+'px';
+  rx+=(mx-rx)*.11; ry+=(my-ry)*.11;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(tick);
+})();
+function ch(el){
+  el.addEventListener('mouseenter',()=>document.body.classList.add('on-link'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('on-link'));
+}
+
+/* ── Scroll ── */
+const navEl = document.getElementById('nav');
+const barEl = document.getElementById('bar');
+window.addEventListener('scroll',()=>{
+  const s=document.documentElement;
+  barEl.style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%';
+  navEl.classList.toggle('solid',s.scrollTop>50);
+},{passive:true});
+
+/* ── Scroll reveal ── */
+const ro = new IntersectionObserver(
+  ens=>ens.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');}),
+  {threshold:.1}
+);
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* ── Filter pills ── */
+const pillsEl   = document.getElementById('filterPills');
+const countEl   = document.getElementById('certCount');
+CATEGORIES.forEach(cat=>{
+  const btn = document.createElement('button');
+  btn.className='fpill'+(cat==='All'?' active':'');
+  btn.dataset.filter=cat;
+  btn.innerHTML=`<span>${x(cat)}</span>`;
+  btn.addEventListener('click',()=>setFilter(cat));
+  ch(btn);
+  pillsEl.appendChild(btn);
+});
+function setFilter(cat){
+  activeFilter=cat;
+  pillsEl.querySelectorAll('.fpill').forEach(b=>b.classList.toggle('active',b.dataset.filter===cat));
+  let n=0;
+  document.querySelectorAll('.cert-card').forEach(c=>{
+    const show=cat==='All'||c.dataset.category===cat;
+    c.classList.toggle('hidden',!show);
+    if(show)n++;
+  });
+  countEl.innerHTML=`Showing <strong>${n}</strong> of ${CERTS.length}`;
+}
+countEl.innerHTML=`Showing <strong>${CERTS.length}</strong> of ${CERTS.length}`;
+
+/* ── Build cards ── */
+const grid = document.getElementById('certsGrid');
+CERTS.forEach(cert=>grid.appendChild(buildCard(cert)));
+requestAnimationFrame(()=>setTimeout(runQueue,300));
+
+function buildCard(cert){
+  const card=document.createElement('article');
+  card.className='cert-card';
+  card.dataset.certId=cert.id;
+  card.dataset.category=cert.category;
+  card.setAttribute('tabindex','0');
+  card.setAttribute('role','button');
+  card.setAttribute('aria-label','Open: '+cert.title);
+
+  const scoreHtml = cert.score !== null
+    ? `<span class="cert-score">${cert.score}%</span>`
+    : `<span class="cert-score endorsement">${cert.duration || 'Endorsement'}</span>`;
+
+  card.innerHTML=`
+    <div class="cert-thumb" id="th-${cert.id}">
+      <div class="thumb-loader" id="ld-${cert.id}">
+        <div class="thumb-loader-ring"></div>
+        <span class="thumb-loader-lbl">Loading</span>
+      </div>
+    </div>
+    <div class="cert-view"><div class="cert-view-inner">Open Certificate</div></div>
+    <div class="cert-body">
+      <div class="cert-cat">${x(cert.category)}</div>
+      <h3 class="cert-title">${x(cert.title)}</h3>
+      <p class="cert-issuer">${x(cert.issuer)}</p>
+      <div class="cert-footer">
+        <span class="cert-date">${x(cert.date)}</span>
+        ${scoreHtml}
+      </div>
+    </div>`;
+
+  const open=()=>openModal(cert);
+  card.addEventListener('click',open);
+  card.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+  ch(card);
+  return card;
+}
+
+/* ── Thumbnail queue (lazy, sequential, non-blocking) ── */
+async function runQueue(){
+  if(qBusy||!thumbQueue.length)return;
+  qBusy=true;
+  while(thumbQueue.length){
+    const cert=thumbQueue.shift();
+    await renderThumb(cert);
+    await new Promise(r=>setTimeout(r,60));
+  }
+  qBusy=false;
+}
+
+async function renderThumb(cert){
+  const thumbEl =document.getElementById('th-'+cert.id);
+  const loaderEl=document.getElementById('ld-'+cert.id);
+  if(!thumbEl)return;
+  try{
+    const pdf =await pdfjsLib.getDocument(cert.file).promise;
+    const page=await pdf.getPage(1);
+    const vp  =page.getViewport({scale:1.0});
+    const canvas=document.createElement('canvas');
+    canvas.width=vp.width; canvas.height=vp.height;
+    await page.render({canvasContext:canvas.getContext('2d'),viewport:vp}).promise;
+    if(loaderEl)loaderEl.remove();
+    thumbEl.appendChild(canvas);
+    requestAnimationFrame(()=>canvas.classList.add('loaded'));
+  }catch(_){
+    /* Graceful fallback — PDF not yet in assets folder */
+    if(loaderEl)loaderEl.innerHTML=`
+      <div class="thumb-fallback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+          <polyline points="14 2 14 8 20 8"/>
+          <line x1="16" y1="13" x2="8" y2="13"/>
+          <line x1="16" y1="17" x2="8" y2="17"/>
+        </svg>
+        <span>PDF</span>
+      </div>`;
+  }
+}
+
+/* ── Modal ── */
+const backdrop  =document.getElementById('modalBackdrop');
+const mClose    =document.getElementById('modalClose');
+const mIssuer   =document.getElementById('modalIssuerEl');
+const mTitle    =document.getElementById('modalTitleEl');
+const mBody     =document.getElementById('modalBody');
+const mLoading  =document.getElementById('modalLoading');
+const mPages    =document.getElementById('pdfPages');
+const mError    =document.getElementById('modalError');
+const mEPath    =document.getElementById('modalErrorPath');
+const mMeta     =document.getElementById('modalMeta');
+const mDl       =document.getElementById('modalDl');
+
+async function openModal(cert){
+  activeCert=cert;
+  mIssuer.textContent=cert.issuer;
+  mTitle.textContent=cert.title;
+  mDl.href=cert.file;
+
+  /* Reset state cleanly */
+  mPages.hidden=true; mError.hidden=true; mLoading.hidden=false;
+  mPages.innerHTML=''; mMeta.innerHTML=''; mBody.scrollTop=0;
+
+  backdrop.classList.add('open');
+  backdrop.setAttribute('aria-hidden','false');
+  document.body.style.overflow='hidden';
+
+  try{
+    /* Attempt to load the PDF */
+    const loadTask=pdfjsLib.getDocument(cert.file);
+
+    /* Timeout after 12 seconds to avoid hanging indefinitely */
+    const pdf=await Promise.race([
+      loadTask.promise,
+      new Promise((_,rej)=>setTimeout(()=>rej(new Error('timeout')),12000))
+    ]);
+
+    const n=pdf.numPages;
+
+    /* Meta line */
+    const scoreStr = cert.score !== null
+      ? `Score <strong>${cert.score}%</strong> &nbsp;·&nbsp; `
+      : (cert.duration ? `Duration <strong>${cert.duration}</strong> &nbsp;·&nbsp; ` : '');
+    mMeta.innerHTML=`${scoreStr}${x(cert.date)} &nbsp;·&nbsp; <strong>${n}</strong> page${n>1?'s':''}`;
+
+    mLoading.hidden=true;
+    mPages.hidden=false;
+
+    for(let i=1;i<=n;i++){
+      const page=await pdf.getPage(i);
+      const maxW=Math.min(780,window.innerWidth-80);
+      const sc=maxW/page.getViewport({scale:1}).width;
+      const vp=page.getViewport({scale:Math.min(sc,2.5)});
+
+      const wrap=document.createElement('div');
+      wrap.className='pdf-page-wrap';
+      const badge=document.createElement('span');
+      badge.className='pdf-pg-badge';
+      badge.textContent=`${i} / ${n}`;
+      const canvas=document.createElement('canvas');
+      const ctx=canvas.getContext('2d');
+      canvas.width=vp.width; canvas.height=vp.height;
+      wrap.appendChild(canvas); wrap.appendChild(badge);
+      mPages.appendChild(wrap);
+      await page.render({canvasContext:ctx,viewport:vp}).promise;
+      requestAnimationFrame(()=>setTimeout(()=>wrap.classList.add('vis'),i*80));
+    }
+
+  }catch(err){
+    /* Clear any loading state, show friendly error */
+    mLoading.hidden=true;
+    mError.hidden=false;
+    mEPath.textContent=cert.file;
+    mMeta.innerHTML=`${x(cert.date)}${cert.score!==null?' &nbsp;·&nbsp; Score <strong>'+cert.score+'%</strong>':''}`;
+  }
+}
+
+function closeModal(){
+  backdrop.classList.remove('open');
+  backdrop.setAttribute('aria-hidden','true');
+  document.body.style.overflow='';
+  activeCert=null;
+  setTimeout(()=>{
+    mPages.innerHTML='';
+    mLoading.hidden=false;
+    mError.hidden=true;
+    mPages.hidden=true;
+  },550);
+}
+
+mClose.addEventListener('click',closeModal);
+ch(mClose); ch(mDl);
+backdrop.addEventListener('click',e=>{if(e.target===backdrop)closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&activeCert)closeModal();});
+
+/* ── Utility ── */
+function x(s){
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+})();
+</script>
+</body>
+</html>
